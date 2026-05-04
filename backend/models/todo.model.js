@@ -21,4 +21,6 @@ const todoSchema = new mongoose.Schema({
   }
 });
 
+todoSchema.index({ text: 'text' });
+
 module.exports = mongoose.model('todo', todoSchema);
