@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 process.loadEnvFile('./.env');
 
 const { connectDB } = require('./config/database');
+const { connectRedis } = require('./config/redis');
 const models = require('./models');
 const router = require('./routes');
 
@@ -55,6 +56,7 @@ async function initApp(options = {}) {
   const theApp = createApp();
 
   await connectDB();
+  await connectRedis();
 
   theApp.locals.models = models;
 
